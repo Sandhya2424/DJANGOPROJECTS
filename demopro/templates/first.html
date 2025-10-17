@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{% load static %}    <!--path upto static folder-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<h1>first page</h1>
+<h1>Name is {{name}}</h1>
+<h2>Age is {{age}}</h2>
+<img src="{% static 'image/img.png'%}">
+</body>
+</html>

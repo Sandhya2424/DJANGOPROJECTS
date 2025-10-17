@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container border border-2 border-secondary  bg-secondary shadow w-25 mt-5 p-5 mx-auto text-center">
+<h2>FACTORIAL</h2>
+        <form method="post">
+            {% csrf_token %}
+  <div class="mb-4 mt-4">
+<!--    <label for="exampleInputEmail1" class="form-label">Email address</label>-->
+    <input type="number" class="form-control" name="n1">
+<!--    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>-->
+  </div>
+  <button type="submit" class="btn btn-primary">fact</button>
+</form>
+    {% if result %}
+    <h1>fact is{{result}}</h1>
+    {% endif %}
+</div>
+{% endblock %}

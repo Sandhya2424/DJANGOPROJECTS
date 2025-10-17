@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Movie List</title>
+{% endblock %}
+
+{% block nav %}
+<div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+            <a class="nav-link me-3" href="{% url 'app1:home' %}">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active me-3" href="{% url 'app1:movielist' %}">Movie List</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'app1:addmovie' %}">Add Movie</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        {% for movie in movies %}
+        <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="card h-100">
+                {% if movie.image %}
+                    <img src="{{ movie.image.url }}" class="card-img-top" alt="{{ movie.title }}">
+                {% else %}
+                    <img src="https://via.placeholder.com/300x200?text=No+Image" class="card-img-top" alt="No Image">
+                {% endif %}
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ movie.title }}</h5>
+                    <p class="card-text">{{ movie.year }}</p>
+                    <a href="{% url 'app1:moviedetail' movie.id %}" class="btn btn-secondary">Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

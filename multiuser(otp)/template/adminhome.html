@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Home</title>
+{% endblock %}
+
+{% block content %}
+<div class="container w-75 mx-auto p-5 mt-5 text-center border border-3 shadow bg-light">
+    <h2>WELCOME TO ADMIN HOME</h2>
+    {% if user.is_authenticated %}
+    <h4>Hey {{user.username}}</h4>
+    {% else %}
+    <h4> Heyy guest</h4>
+    {% endif %}
+</div>
+{% endblock %}
