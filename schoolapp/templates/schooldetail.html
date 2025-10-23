@@ -1,10 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container w-50 mx-auto p-5 mt-5 text-center border border-3 shadow bg-light rounded-4">
+    <h2 class="mb-4 text-center">{{ school.name }} Details</h2>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Name</th>
+            <td>{{ school.name }}</td>
+        </tr>
+        <tr>
+            <th>Principal</th>
+            <td>{{ school.principal }}</td>
+        </tr>
+        <tr>
+            <th>Location</th>
+            <td>{{ school.location }}</td>
+        </tr>
+    </table>
+
+    {% if not request.user.is_superuser %}
+        <div class="text-center mt-3">
+            {% if can_join == True %}
+            <a href="{% url 'studentjoin' school.id %}" class="btn btn-danger">Join Now</a>
+            {% endif %}
+            {% if is_student == True %}
+            <a href="{% url 'leaveschool' school.id %}" class="btn btn-danger">Leave Now</a>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        {% if user.is_superuser %}
+            <div class="d-flex justify-content-center">
+                <h1>List of Students</h1>
+                <ol>
+                    {% for j in school.students.all %}
+                        <li>Student Name: {{ j.name }}<br>Age: {{ j.age }}<br>Place: {{ j.place }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+        {% endif %}
+    {% endif %}
+</div>
+{% endblock %}
+

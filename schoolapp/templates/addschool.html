@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container w-50 mx-auto p-5 mt-5 text-center border border-3 shadow bg-light rounded-4">
+    <h2>ADD SCHOOL</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="mt-3">
+            <input type="submit" class="btn btn-primary">
+        </div>
+    </form>
+    {% if messages %}
+    <ul class="mt-3 list-unstyled text-danger">
+        {% for msg in messages %}
+            <li>{{ msg }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+{% endblock %}

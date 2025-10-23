@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container w-75 mx-auto p-5 mt-5 text-center border border-3 shadow bg-light rounded-4">
+    <h2>WELCOME TO STUDENT HOME</h2>
+    <h4>Hey {{ user.username }}</h4>
+</div>
+{% endblock %}

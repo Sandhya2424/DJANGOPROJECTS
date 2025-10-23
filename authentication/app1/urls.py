@@ -20,6 +20,6 @@ from app1 import views
 urlpatterns = [
     path('', views.Home.as_view(), name='home'),
     path('register/', views.Register.as_view(), name='register'),
-    path('login/', views.Userlogin.as_view(), name='login'),
-    path('logout/', views.Userlogout.as_view(), name='logout'),
+    path('Userlogin/', views.Userlogin.as_view(), name='Userlogin'),
+    path('Userlogout/', views.Userlogout.as_view(), name='Userlogout'),
 ]

@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container w-50 mx-auto mt-5 p-4 border border-danger rounded text-center">
+    <h2 class="mb-4">School List</h2>
+    {% if schools %}
+        <ol class="text-start mx-auto" style="width: fit-content;">
+            {% for school in schools %}
+                <li>
+                    <a href="{% url 'schooldetail' school.id %}">{{ school.name }}</a>
+                </li>
+            {% endfor %}
+        </ol>
+    {% else %}
+        <p class="text-muted">No schools available.</p>
+    {% endif %}
+</div>
+{% endblock %}
